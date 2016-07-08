@@ -1,0 +1,123 @@
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\bin\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\bin\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\obj\x86\Debug\_3DGimbal.Form1.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\obj\x86\Debug\3DGimbal.csproj.GenerateResource.Cache
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\obj\x86\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\bin\Debug\SerialCom.dll
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\bin\Debug\SerialCom.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal\3DGimbal\obj\x86\Debug\3DGimbal.csprojResolveAssemblyReference.cache
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\obj\x86\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\bin\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\bin\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\bin\Debug\SerialCom.dll
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\bin\Debug\SerialCom.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\obj\x86\Debug\3DGimbal.csprojResolveAssemblyReference.cache
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\obj\x86\Debug\_3DGimbal.Form1.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-23)\3DGimbal\obj\x86\Debug\3DGimbal.csproj.GenerateResource.Cache
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\obj\x86\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\bin\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\bin\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\bin\Debug\SerialCom.dll
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\bin\Debug\SerialCom.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\obj\x86\Debug\3DGimbal.csprojResolveAssemblyReference.cache
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\obj\x86\Debug\_3DGimbal.Form1.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-24)\3DGimbal\obj\x86\Debug\3DGimbal.csproj.GenerateResource.Cache
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-26)\3DGimbal\obj\x86\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-26)\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\obj\x86\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\bin\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\bin\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\bin\Debug\SerialCom.dll
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\bin\Debug\SerialCom.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\obj\x86\Debug\3DGimbal.csprojResolveAssemblyReference.cache
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\obj\x86\Debug\_3DGimbal.Form1.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-27)\3DGimbal\obj\x86\Debug\3DGimbal.csproj.GenerateResource.Cache
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\obj\x86\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\bin\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\bin\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\bin\Debug\SerialCom.dll
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\bin\Debug\SerialCom.pdb
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\obj\x86\Debug\3DGimbal.csprojResolveAssemblyReference.cache
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\obj\x86\Debug\_3DGimbal.Form1.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+G:\Research\科研项目\无人飞行器项目\无刷云台\2-分布式\上位机程序\3DGimbal(2016-05-28)\3DGimbal\obj\x86\Debug\3DGimbal.csproj.GenerateResource.Cache
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\3DGimbal\obj\x86\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.csprojResolveAssemblyReference.cache
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\_3DGimbal.Form1.resources
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.csproj.GenerateResource.Cache
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\3DGimbal.exe
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\3DGimbal.pdb
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\SerialCom.dll
+G:\Research\科研项目\无人飞行器项目\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\SerialCom.pdb
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.exe
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\3DGimbal.exe
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\3DGimbal.pdb
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\SerialCom.dll
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\SerialCom.pdb
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.csprojResolveAssemblyReference.cache
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\_3DGimbal.Form1.resources
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+C:\Users\FindYou\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.csproj.GenerateResource.Cache
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.exe
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\3DGimbal.exe
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\3DGimbal.pdb
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\SerialCom.dll
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\SerialCom.pdb
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\_3DGimbal.Form1.resources
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\2016-6-24 22 49桌面备份\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.exe
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\3DGimbal.exe
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\3DGimbal.pdb
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\SerialCom.dll
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\bin\Debug\SerialCom.pdb
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\_3DGimbal.Form1.resources
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\_3DGimbal.Main.resources
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-06-19\3DGimbal\obj\x86\Debug\GenerateResource.read.56.tlog
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\obj\x86\Debug\3DGimbal.exe
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\bin\Debug\3DGimbal.exe
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\bin\Debug\3DGimbal.pdb
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\bin\Debug\SerialCom.dll
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\bin\Debug\SerialCom.pdb
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\obj\x86\Debug\_3DGimbal.CurveControl.resources
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\obj\x86\Debug\_3DGimbal.Main.resources
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-03绘制曲线控件\3DGimbal\bin\Debug\ZedGraph.dll
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\obj\x86\Debug\3DGimbal.exe
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\obj\x86\Debug\3DGimbal.pdb
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\bin\Debug\3DGimbal.exe
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\bin\Debug\3DGimbal.pdb
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\bin\Debug\SerialCom.dll
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\bin\Debug\ZedGraph.dll
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\obj\x86\Debug\_3DGimbal.CurveControl.resources
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\obj\x86\Debug\_3DGimbal.Main.resources
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\obj\x86\Debug\_3DGimbal.Properties.Resources.resources
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Silenoff\Desktop\综合课程设计+毕业设计\动力测试仪\上位机程序\PowerModeling\2016-07-07波形制造器\3DGimbal\obj\x86\Debug\GenerateResource.write.1.tlog

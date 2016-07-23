@@ -7,6 +7,7 @@ using Microsoft.Research.DynamicDataDisplay;
 using CurveDll;
 using System.Collections.Generic;
 using System.Threading;
+using ZedGraph;
 
 namespace _3DGimbal
 {
@@ -123,20 +124,44 @@ namespace _3DGimbal
 
         #endregion
 
-        private static CCurveInitialise curveInitialise = new CCurveInitialise("无人机状态曲线图", "0.1s", "度");
-        private static ObservableDataSource<System.Windows.Point> dataSource = new ObservableDataSource<System.Windows.Point>();
-        private CCurveDrow curveDrowT = new CCurveDrow(curveInitialise, dataSource, System.Windows.Media.Colors.Gold, 3, "IMU温度");
+        //private static CCurveInitialise curveInitialise = new CCurveInitialise("无人机状态曲线图", "0.1s", "度");
+        //private static ObservableDataSource<System.Windows.Point> dataSource = new ObservableDataSource<System.Windows.Point>();
+        //private CCurveDrow curveDrowT = new CCurveDrow(curveInitialise, dataSource, System.Windows.Media.Colors.Gold, 3, "IMU温度");
 
         public MainForm()
         {
             InitializeComponent();
             serialCom = new SerialCom();
             serialCom.Visible = false;
+            myPane = zedGraphControl1.GraphPane;
+            initGraphPane(myPane);  
             secondPerformsTabPanel.Visible = false;
             secondTechSupportPanel.Visible = false;
             secondPlaybackPanel.Visible = false;
             btnSettingPWM.Enabled = false;
 
+        }
+        private void initGraphPane(GraphPane myPane)
+        {
+            Chart myChart = myPane.Chart;
+            myChart.Fill = new Fill(Color.DarkGray);
+            myPane.Fill = new Fill(Color.DarkGray);
+            //this.zedGraphControl1.GraphPane.Chart.Fill = new Fill(Color.Transparent, Color.Transparent, 45.0f);
+            //this.zedGraphControl1.MasterPane.Fill = new Fill(Color.Transparent, Color.Transparent, 45.0f);
+            //this.zedGraphControl1.GraphPane.Fill.Color = Color.Transparent;  
+            myPane.Title.Text = "波形分析";
+            myPane.XAxis.Title.Text = "时间";
+            myPane.YAxis.Title.Text = "数值";
+            realCurve = myPane.AddCurve("真实", realCurveList, setRealCurveColor(), SymbolType.None);
+            orderCurve = myPane.AddCurve("命令", orderCurveList, setOrderCurveColor(), SymbolType.None);
+        }
+        private Color setRealCurveColor()
+        {
+            return Color.Red;
+        }
+        private Color setOrderCurveColor()
+        {
+            return Color.Blue;
         }
 
         #region 顶部鼠标左键拖动程序位置
@@ -931,6 +956,7 @@ namespace _3DGimbal
         float rotate = 0.0f;     //转速(r/s)
         float current = 0.0f;    //电流(i)
         float efficiency = 0.0f; //效率(g/w)
+        byte[] receiveData = new byte[16];
         /// <summary>
         /// 定时器的回调函数，周期为10ms
         /// </summary>
@@ -940,64 +966,53 @@ namespace _3DGimbal
         {
             //PWMFExpression.Text = current + "x²+" + current + "x+" + current;
 
-            
             if (serialCom.CheckFrame())
             {
-                switch (serialCom.rxFrame.fnCode)
+                receiveData = serialCom.rxFrame.data;
+                if (isCalibration)
                 {
-                    case FunctionCode.FC_GET_WEIGHT:
-                        if (isCalibration)
-                        {
-                            labelCalibrationStatus.Text = "正在标定";
-                            CalibrationWeight();
-                        }
-                        else
-                        {
-                            labelCalibrationStatus.Text = "标定成功";
-                            btnSettingPWM.Enabled = true;
-                            //  ((calibrationValue - BitConverter.ToSingle(serialCom.rxFrame.data, 0)) / 213.0605137);
-                            lift = (calibrationValue - BitConverter.ToSingle(serialCom.rxFrame.data, 0)) / 213.0605137f;
-                            LiftCurveControl.Value = (int)lift;
-                            LiftTextLabel.Text = lift.ToString("f2");
-                            liftDataChche[liftCachePosition++] = lift;
-                            if (liftCachePosition>=1023)
-                            {
-                                liftCachePosition = 0;
-                            }
-                        }
-                        break;
-                    case FunctionCode.FC_MOTOR_CUR_VEL:
-                        rotate = BitConverter.ToSingle(serialCom.rxFrame.data, 0);
-                        RotateCurveControl.Value = (int)rotate;
-                        RotageTextLabel.Text = rotate.ToString("f2");
-                        rotateDataCache[rotateCachePosition++] = rotate;
-                        if (rotateCachePosition>=1023)
-                        {
-                            rotateCachePosition = 0;
-                        }
-                        break;
-                    case FunctionCode.FC_GET_VOLTAGE:
-                        voltage = BitConverter.ToSingle(serialCom.rxFrame.data, 0);
-                        
-                        break;
-                    case FunctionCode.FC_GET_CURRENT:
-                        current = BitConverter.ToSingle(serialCom.rxFrame.data, 0);
-                        CurrentCurveControl.Value = (int)current;
-                        CurrentTextLabel.Text = current.ToString("f2");
-                        currentDataCache[currentCachePosition++] = current;
-                        if(currentCachePosition>=1023)
-                        {
-                            currentCachePosition = 0;
-                        }
-                        break;
+                    labelCalibrationStatus.Text = "正在标定";
+                    CalibrationWeight();
+                }
+                else
+                {
+                    labelCalibrationStatus.Text = "标定成功";
+                    btnSettingPWM.Enabled = true;
+                    //  ((calibrationValue - BitConverter.ToSingle(serialCom.rxFrame.data, 0)) / 213.0605137);
+                    lift = (calibrationValue - BitConverter.ToSingle(receiveData, 4)) / 213.0605137f;
+                    LiftCurveControl.Value = (int)lift;
+                    LiftTextLabel.Text = lift.ToString("f2");
+                    liftDataChche[liftCachePosition++] = lift;
+                    if (liftCachePosition>=1023)
+                    {
+                        liftCachePosition = 0;
+                    }
+                }
+
+                rotate = BitConverter.ToSingle(receiveData, 0);
+                RotateCurveControl.Value = (int)rotate;
+                RotageTextLabel.Text = rotate.ToString("f2");
+                rotateDataCache[rotateCachePosition++] = rotate;
+                if (rotateCachePosition>=1023)
+                {
+                    rotateCachePosition = 0;
+                }
+
+                voltage = BitConverter.ToSingle(receiveData, 8);
+
+                current = BitConverter.ToSingle(receiveData, 12);
+                CurrentCurveControl.Value = (int)current;
+                CurrentTextLabel.Text = current.ToString("f2");
+                currentDataCache[currentCachePosition++] = current;
+                if(currentCachePosition>=1023)
+                {
+                    currentCachePosition = 0;
                 }
             }
-
 
             PWMCurveControl.Value = (int)PWMCurveData;
             PWMTextLabel.Text = PWMCurveData.ToString();
             pwmDataCache[pwmCachePosition++] = PWMCurveData;
-           // pwmCachePosition++;
             if(pwmCachePosition>=1023)
             {
                 pwmCachePosition = 0;
@@ -1011,7 +1026,7 @@ namespace _3DGimbal
             {
                 efficiency = 0;
             }
-            else if (lift < 2.0f)
+            else if (lift < 1.0f)
             {
                 efficiency = 0;
             }
@@ -1050,7 +1065,7 @@ namespace _3DGimbal
         {
             if (countAve < 100)
             {
-                portData[countAve] = BitConverter.ToSingle(serialCom.rxFrame.data, 0);
+                portData[countAve] = BitConverter.ToSingle(receiveData, 4);
                 countAve++;
             }
             else
@@ -1187,12 +1202,21 @@ namespace _3DGimbal
             { }
         }
 
+        private int orderXAxis = 0;  //命令的X坐标
+        private int realXAxis  = 0;  //真实的X坐标
+
         private void LiftText()  //升力测试 PWM从0-100,观察升力的变化及pwm波与升力的关系
         {
             Thread thread;
             thread = new Thread(new ThreadStart(RunLiftTest));
-            thread.Start();            
+            thread.IsBackground = true;
+            thread.Start();
         }
+        /// <summary>
+        /// 命令曲线的委托事件
+        /// </summary>
+        private delegate void orderCurveInvoke(); 
+
         private void RunLiftTest()
         {
             for (int i = 1; i < 101; i++)
@@ -1202,12 +1226,15 @@ namespace _3DGimbal
                 BitConverter.GetBytes((float)i).CopyTo(serialCom.txFrame.data, 0);
                 serialCom.txFrame.isUpdated = true;
                 serialCom.SendFrame();
+            //    orderXAxis += 1;
+            //    orderCurveList.Add(orderXAxis, i);
                 long endTime = DateTime.Now.Millisecond;
                 int minus = Convert.ToInt32(endTime - startTime);
-                if (minus < 100)  //两次时间差小于10ms
+                if (minus < 10)  //两次时间差小于100ms
                 {
-                    Thread.Sleep(100 - minus);
+                    Thread.Sleep(10 - minus);
                 }
+            //    zedGraphControl1.Invoke(new orderCurveInvoke(Invoke_01));
             }
             for (int i = 99; i >= 0; i--)
             {
@@ -1216,14 +1243,24 @@ namespace _3DGimbal
                 BitConverter.GetBytes((float)i).CopyTo(serialCom.txFrame.data, 0);
                 serialCom.txFrame.isUpdated = true;
                 serialCom.SendFrame();
+            //    orderXAxis += 1;
+            //    orderCurveList.Add(orderXAxis, i);
                 long endTime = DateTime.Now.Millisecond;
                 int minus = Convert.ToInt32(endTime - startTime);
-                if (minus < 100)  //两次时间差小于10ms
+                if (minus < 10)  //两次时间差小于10ms
                 {
-                    Thread.Sleep(100 - minus);
+                    Thread.Sleep(10 - minus);
                 }
+           //     zedGraphControl1.Invoke(new orderCurveInvoke(Invoke_01));
             }
+            
         }
+
+        private void Invoke_01()   //委托主线程执行界面函数
+        {
+            zedGraphControl1ChangeAxis();
+        }
+
 
         private void SquareWave() //产生方波
         {
@@ -1248,7 +1285,6 @@ namespace _3DGimbal
             listOptions.Add("能力");
             listOptions.Add("性能");
             DynamicOptionCombox.DataSource = listOptions;
-
         }
 
         private void DynamicOptionCombox_SelectedIndexChanged(object sender, EventArgs e)
@@ -1270,6 +1306,47 @@ namespace _3DGimbal
             }
             DynamicAnalysisCombox.DataSource = listAnalysis;
         }
+
+        /// <summary>
+        /// 绘制曲线的背景面板
+        /// </summary>
+        private GraphPane myPane = null;
+        /// <summary>
+        /// 真实数据的曲线
+        /// </summary> 
+        private LineItem realCurve = null;
+        /// <summary>
+        /// 绘制真实的曲线点集合
+        /// </summary>
+        private PointPairList realCurveList = new PointPairList();
+        /// <summary>
+        /// 命令数据的曲线
+        /// </summary> 
+        private LineItem orderCurve = null;
+        /// <summary>
+        /// 绘制命令的曲线点集合
+        /// </summary>
+        private PointPairList orderCurveList = new PointPairList(); 
+
+        private void AnalysisTimer_Tick(object sender, EventArgs e)
+        {
+            realXAxis += 1;
+            if (liftCachePosition > 0)
+            {
+                realCurveList.Add(realXAxis, (double)liftDataChche[liftCachePosition - 1]);
+            }
+            zedGraphControl1ChangeAxis();
+        }
+        private void zedGraphControl1ChangeAxis()
+        {
+            myPane.XAxis.Scale.Min = realXAxis - 500;
+            myPane.XAxis.Scale.Max = realXAxis;
+            myPane.XAxis.Scale.MinorStep = 10;//X轴小步长1,也就是小间隔
+            myPane.XAxis.Scale.MajorStep = 50;//X轴大步长为5，也就是显示文字的大间隔
+            this.zedGraphControl1.AxisChange();
+            this.zedGraphControl1.Refresh();  //更新界面
+        }
+
 
     }
 }

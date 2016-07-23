@@ -70,12 +70,6 @@
             this.statusStr = new System.Windows.Forms.Label();
             this.btnSettingPWM = new System.Windows.Forms.Button();
             this.showCurvegroupBox = new System.Windows.Forms.GroupBox();
-            this.xAxis1 = new _3DGimbal.XAxis();
-            this.EfficiencyCurveControl = new _3DGimbal.CurveControl();
-            this.PWMCurveControl = new _3DGimbal.CurveControl();
-            this.LiftCurveControl = new _3DGimbal.CurveControl();
-            this.CurrentCurveControl = new _3DGimbal.CurveControl();
-            this.RotateCurveControl = new _3DGimbal.CurveControl();
             this.EfficiencyTextLabel = new System.Windows.Forms.Label();
             this.EfficiencyStr = new System.Windows.Forms.Label();
             this.PWMTextLabel = new System.Windows.Forms.Label();
@@ -147,7 +141,13 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.centerTabPanel = new System.Windows.Forms.Panel();
-            this.createWaveTimer = new System.Windows.Forms.Timer(this.components);
+            this.AnalysisTimer = new System.Windows.Forms.Timer(this.components);
+            this.xAxis1 = new _3DGimbal.XAxis();
+            this.EfficiencyCurveControl = new _3DGimbal.CurveControl();
+            this.PWMCurveControl = new _3DGimbal.CurveControl();
+            this.LiftCurveControl = new _3DGimbal.CurveControl();
+            this.CurrentCurveControl = new _3DGimbal.CurveControl();
+            this.RotateCurveControl = new _3DGimbal.CurveControl();
             this.leftTabPanel.SuspendLayout();
             this.secondPerformsTabPanel.SuspendLayout();
             this.secondTechSupportPanel.SuspendLayout();
@@ -683,61 +683,6 @@
             this.showCurvegroupBox.TabIndex = 17;
             this.showCurvegroupBox.TabStop = false;
             this.showCurvegroupBox.Text = "波形图";
-            // 
-            // xAxis1
-            // 
-            this.xAxis1.Location = new System.Drawing.Point(58, 376);
-            this.xAxis1.Name = "xAxis1";
-            this.xAxis1.Size = new System.Drawing.Size(540, 24);
-            this.xAxis1.TabIndex = 25;
-            // 
-            // EfficiencyCurveControl
-            // 
-            this.EfficiencyCurveControl.BackColor = System.Drawing.Color.Black;
-            this.EfficiencyCurveControl.Location = new System.Drawing.Point(58, 310);
-            this.EfficiencyCurveControl.Name = "EfficiencyCurveControl";
-            this.EfficiencyCurveControl.Size = new System.Drawing.Size(540, 60);
-            this.EfficiencyCurveControl.TabIndex = 24;
-            this.EfficiencyCurveControl.DoubleClick += new System.EventHandler(this.EfficiencyCurveControl_DoubleClick);
-            // 
-            // PWMCurveControl
-            // 
-            this.PWMCurveControl.BackColor = System.Drawing.Color.Black;
-            this.PWMCurveControl.Location = new System.Drawing.Point(58, 236);
-            this.PWMCurveControl.Name = "PWMCurveControl";
-            this.PWMCurveControl.Size = new System.Drawing.Size(540, 60);
-            this.PWMCurveControl.TabIndex = 23;
-            this.PWMCurveControl.DoubleClick += new System.EventHandler(this.PWMCurveControl_DoubleClick);
-            // 
-            // LiftCurveControl
-            // 
-            this.LiftCurveControl.BackColor = System.Drawing.Color.Black;
-            this.LiftCurveControl.Location = new System.Drawing.Point(58, 164);
-            this.LiftCurveControl.Name = "LiftCurveControl";
-            this.LiftCurveControl.Range = 650;
-            this.LiftCurveControl.Size = new System.Drawing.Size(540, 60);
-            this.LiftCurveControl.TabIndex = 22;
-            this.LiftCurveControl.DoubleClick += new System.EventHandler(this.LiftCurveControl_DoubleClick);
-            // 
-            // CurrentCurveControl
-            // 
-            this.CurrentCurveControl.BackColor = System.Drawing.Color.Black;
-            this.CurrentCurveControl.Location = new System.Drawing.Point(58, 91);
-            this.CurrentCurveControl.Name = "CurrentCurveControl";
-            this.CurrentCurveControl.Range = 10;
-            this.CurrentCurveControl.Size = new System.Drawing.Size(540, 60);
-            this.CurrentCurveControl.TabIndex = 21;
-            this.CurrentCurveControl.DoubleClick += new System.EventHandler(this.CurrentCurveControl_DoubleClick);
-            // 
-            // RotateCurveControl
-            // 
-            this.RotateCurveControl.BackColor = System.Drawing.Color.Black;
-            this.RotateCurveControl.Location = new System.Drawing.Point(58, 21);
-            this.RotateCurveControl.Name = "RotateCurveControl";
-            this.RotateCurveControl.Range = 200;
-            this.RotateCurveControl.Size = new System.Drawing.Size(540, 60);
-            this.RotateCurveControl.TabIndex = 20;
-            this.RotateCurveControl.DoubleClick += new System.EventHandler(this.RotateCurveControl_DoubleClick);
             // 
             // EfficiencyTextLabel
             // 
@@ -1480,9 +1425,66 @@
             this.centerTabPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.centerTabPanel_MouseMove);
             this.centerTabPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.centerTabPanel_MouseUp);
             // 
-            // createWaveTimer
+            // AnalysisTimer
             // 
-            this.createWaveTimer.Interval = 10;
+            this.AnalysisTimer.Enabled = true;
+            this.AnalysisTimer.Interval = 10;
+            this.AnalysisTimer.Tick += new System.EventHandler(this.AnalysisTimer_Tick);
+            // 
+            // xAxis1
+            // 
+            this.xAxis1.Location = new System.Drawing.Point(58, 376);
+            this.xAxis1.Name = "xAxis1";
+            this.xAxis1.Size = new System.Drawing.Size(540, 24);
+            this.xAxis1.TabIndex = 25;
+            // 
+            // EfficiencyCurveControl
+            // 
+            this.EfficiencyCurveControl.BackColor = System.Drawing.Color.Black;
+            this.EfficiencyCurveControl.Location = new System.Drawing.Point(58, 310);
+            this.EfficiencyCurveControl.Name = "EfficiencyCurveControl";
+            this.EfficiencyCurveControl.Size = new System.Drawing.Size(540, 60);
+            this.EfficiencyCurveControl.TabIndex = 24;
+            this.EfficiencyCurveControl.DoubleClick += new System.EventHandler(this.EfficiencyCurveControl_DoubleClick);
+            // 
+            // PWMCurveControl
+            // 
+            this.PWMCurveControl.BackColor = System.Drawing.Color.Black;
+            this.PWMCurveControl.Location = new System.Drawing.Point(58, 236);
+            this.PWMCurveControl.Name = "PWMCurveControl";
+            this.PWMCurveControl.Size = new System.Drawing.Size(540, 60);
+            this.PWMCurveControl.TabIndex = 23;
+            this.PWMCurveControl.DoubleClick += new System.EventHandler(this.PWMCurveControl_DoubleClick);
+            // 
+            // LiftCurveControl
+            // 
+            this.LiftCurveControl.BackColor = System.Drawing.Color.Black;
+            this.LiftCurveControl.Location = new System.Drawing.Point(58, 164);
+            this.LiftCurveControl.Name = "LiftCurveControl";
+            this.LiftCurveControl.Range = 700;
+            this.LiftCurveControl.Size = new System.Drawing.Size(540, 60);
+            this.LiftCurveControl.TabIndex = 22;
+            this.LiftCurveControl.DoubleClick += new System.EventHandler(this.LiftCurveControl_DoubleClick);
+            // 
+            // CurrentCurveControl
+            // 
+            this.CurrentCurveControl.BackColor = System.Drawing.Color.Black;
+            this.CurrentCurveControl.Location = new System.Drawing.Point(58, 91);
+            this.CurrentCurveControl.Name = "CurrentCurveControl";
+            this.CurrentCurveControl.Range = 10;
+            this.CurrentCurveControl.Size = new System.Drawing.Size(540, 60);
+            this.CurrentCurveControl.TabIndex = 21;
+            this.CurrentCurveControl.DoubleClick += new System.EventHandler(this.CurrentCurveControl_DoubleClick);
+            // 
+            // RotateCurveControl
+            // 
+            this.RotateCurveControl.BackColor = System.Drawing.Color.Black;
+            this.RotateCurveControl.Location = new System.Drawing.Point(58, 21);
+            this.RotateCurveControl.Name = "RotateCurveControl";
+            this.RotateCurveControl.Range = 200;
+            this.RotateCurveControl.Size = new System.Drawing.Size(540, 60);
+            this.RotateCurveControl.TabIndex = 20;
+            this.RotateCurveControl.DoubleClick += new System.EventHandler(this.RotateCurveControl_DoubleClick);
             // 
             // MainForm
             // 
@@ -1672,6 +1674,6 @@
         private CurveControl LiftCurveControl;
         private CurveControl CurrentCurveControl;
         private XAxis xAxis1;
-        private System.Windows.Forms.Timer createWaveTimer;
+        private System.Windows.Forms.Timer AnalysisTimer;
     }
 }

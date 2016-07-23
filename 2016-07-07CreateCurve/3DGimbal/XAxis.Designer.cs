@@ -1,6 +1,6 @@
 ﻿namespace _3DGimbal
 {
-    partial class CurveControl
+    partial class XAxis
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // CurveControl
+            // XAxis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "CurveControl";
-            this.Size = new System.Drawing.Size(592, 77);
+            this.Name = "XAxis";
+            this.Size = new System.Drawing.Size(520, 41);
             this.ResumeLayout(false);
 
         }

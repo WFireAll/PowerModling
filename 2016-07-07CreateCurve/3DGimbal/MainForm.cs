@@ -8,6 +8,8 @@ using CurveDll;
 using System.Collections.Generic;
 using System.Threading;
 using ZedGraph;
+using System.IO;
+using System.Text;
 
 namespace _3DGimbal
 {
@@ -139,6 +141,18 @@ namespace _3DGimbal
             secondTechSupportPanel.Visible = false;
             secondPlaybackPanel.Visible = false;
             btnSettingPWM.Enabled = false;
+            if (!File.Exists(@"C:\\Users\\Silenoff\\Desktop\\A.txt"))
+            {
+                fs = new FileStream("C:\\Users\\Silenoff\\Desktop\\A.txt", FileMode.Append);
+                sw = new StreamWriter(fs, Encoding.UTF8);
+            }
+            else
+            {
+                File.Delete(@"C:\\Users\\Silenoff\\Desktop\\A.txt");
+                fs = new FileStream("C:\\Users\\Silenoff\\Desktop\\A.txt", FileMode.Append);
+                sw = new StreamWriter(fs, Encoding.UTF8);
+            }
+            
 
         }
         private void initGraphPane(GraphPane myPane)
@@ -850,6 +864,12 @@ namespace _3DGimbal
                 serialCom.txFrame.isUpdated = true;
                 serialCom.SendFrame();
             }
+            if (sw!=null&&fs!=null)
+            {
+                sw.Close();
+                fs.Close();
+            }
+            
             System.Environment.Exit(0);
         }
         /// <summary>
@@ -982,11 +1002,12 @@ namespace _3DGimbal
                     lift = (calibrationValue - BitConverter.ToSingle(receiveData, 4)) / 213.0605137f;
                     LiftCurveControl.Value = (int)lift;
                     LiftTextLabel.Text = lift.ToString("f2");
-                    liftDataChche[liftCachePosition++] = lift;
-                    if (liftCachePosition>=1023)
+                    if (liftCachePosition >= 1023)
                     {
                         liftCachePosition = 0;
                     }
+                    liftDataChche[liftCachePosition++] = lift;
+                    
                 }
 
                 rotate = BitConverter.ToSingle(receiveData, 0);
@@ -999,24 +1020,27 @@ namespace _3DGimbal
                 }
 
                 voltage = BitConverter.ToSingle(receiveData, 8);
+                voltageLabel.Text = voltage.ToString("f2");
 
                 current = BitConverter.ToSingle(receiveData, 12);
                 CurrentCurveControl.Value = (int)current;
                 CurrentTextLabel.Text = current.ToString("f2");
-                currentDataCache[currentCachePosition++] = current;
-                if(currentCachePosition>=1023)
+                if (currentCachePosition >= 1023)
                 {
                     currentCachePosition = 0;
                 }
+                currentDataCache[currentCachePosition++] = current;
+                
             }
 
             PWMCurveControl.Value = (int)PWMCurveData;
             PWMTextLabel.Text = PWMCurveData.ToString();
-            pwmDataCache[pwmCachePosition++] = PWMCurveData;
-            if(pwmCachePosition>=1023)
+            if (pwmCachePosition >= 1023)
             {
                 pwmCachePosition = 0;
             }
+            pwmDataCache[pwmCachePosition++] = PWMCurveData;
+            
 
             if (voltage * current == 0)
             {
@@ -1037,11 +1061,12 @@ namespace _3DGimbal
 
             EfficiencyCurveControl.Value = (int)efficiency;
             EfficiencyTextLabel.Text = efficiency.ToString("f2");
-            efficiencyDataCache[efficiencyCachePosition++] = efficiency;
             if (efficiencyCachePosition >= 1023)
             {
                 efficiencyCachePosition = 0;
             }
+            efficiencyDataCache[efficiencyCachePosition++] = efficiency;
+            
             ReflushShowCurve(); //每次定时器完成，更新一次界面
         }
         /// <summary>
@@ -1164,119 +1189,236 @@ namespace _3DGimbal
         }
         #endregion
 
-
+        private Boolean isClickDynamicAnalysisBtn = false;
         private void DynamicAnalysisBtn_Click(object sender, EventArgs e)
         {
-            if (DynamicOptionCombox.SelectedIndex == 0)
+            if (!isClickDynamicAnalysisBtn)
             {
-                switch (DynamicAnalysisCombox.SelectedIndex)
-                {
-                    case 0:
-                        LiftText();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if (DynamicOptionCombox.SelectedIndex == 1)
-            {
-                switch (DynamicAnalysisCombox.SelectedIndex)
-                {
-                    case 0:
-                        SquareWave();
-                        break;
-                    case 1:
-                        TerracedWave();
-                        break;
-                    case 2:
-                        SinWave();
-                        break;
-                    case 3:
-                        CosWave();
-                        break;
-                    default:
-                        break;
-                }
+                AnalysisTimer.Enabled = true;
+                isClickDynamicAnalysisBtn = true;
+                DynamicAnalysisBtn.Text = "取消";
             }
             else
-            { }
-        }
-
-        private int orderXAxis = 0;  //命令的X坐标
-        private int realXAxis  = 0;  //真实的X坐标
-
-        private void LiftText()  //升力测试 PWM从0-100,观察升力的变化及pwm波与升力的关系
-        {
-            Thread thread;
-            thread = new Thread(new ThreadStart(RunLiftTest));
-            thread.IsBackground = true;
-            thread.Start();
-        }
-        /// <summary>
-        /// 命令曲线的委托事件
-        /// </summary>
-        private delegate void orderCurveInvoke(); 
-
-        private void RunLiftTest()
-        {
-            for (int i = 1; i < 101; i++)
             {
-                long startTime = DateTime.Now.Millisecond;
-                serialCom.txFrame.fnCode = FunctionCode.FC_MOTOR_SET_VEL;
-                BitConverter.GetBytes((float)i).CopyTo(serialCom.txFrame.data, 0);
-                serialCom.txFrame.isUpdated = true;
-                serialCom.SendFrame();
-            //    orderXAxis += 1;
-            //    orderCurveList.Add(orderXAxis, i);
-                long endTime = DateTime.Now.Millisecond;
-                int minus = Convert.ToInt32(endTime - startTime);
-                if (minus < 10)  //两次时间差小于100ms
-                {
-                    Thread.Sleep(10 - minus);
-                }
-            //    zedGraphControl1.Invoke(new orderCurveInvoke(Invoke_01));
-            }
-            for (int i = 99; i >= 0; i--)
-            {
-                long startTime = DateTime.Now.Millisecond;
-                serialCom.txFrame.fnCode = FunctionCode.FC_MOTOR_SET_VEL;
-                BitConverter.GetBytes((float)i).CopyTo(serialCom.txFrame.data, 0);
-                serialCom.txFrame.isUpdated = true;
-                serialCom.SendFrame();
-            //    orderXAxis += 1;
-            //    orderCurveList.Add(orderXAxis, i);
-                long endTime = DateTime.Now.Millisecond;
-                int minus = Convert.ToInt32(endTime - startTime);
-                if (minus < 10)  //两次时间差小于10ms
-                {
-                    Thread.Sleep(10 - minus);
-                }
-           //     zedGraphControl1.Invoke(new orderCurveInvoke(Invoke_01));
+                AnalysisTimer.Enabled = false;
+                isClickDynamicAnalysisBtn = false;
+                DynamicAnalysisBtn.Text = "确定";
             }
             
         }
 
-        private void Invoke_01()   //委托主线程执行界面函数
+        private int XAxisAnalysisWave = 0;  //分析波形的X坐标
+
+        private float curLiftSendPWM = 0;  //当前发送的升力PWM波的值
+        private float curLineSendPWM = 0;  //当前发送的线性波的PWM值
+        private bool  incOrdec = true;  //true表示增加（0-100），false表示减少（100-0）
+        FileStream fs;
+        StreamWriter sw;
+
+        private void LiftText()   //PWM从0-100，测试升力
         {
+            if (!serialCom.isComOpen())
+            {
+                MessageBox.Show("未打开串口，请先打开串口", "警告");
+                return;
+            }
+            XAxisAnalysisWave += 1;
+            serialCom.txFrame.fnCode = FunctionCode.FC_MOTOR_SET_VEL;
+            BitConverter.GetBytes((float)curLiftSendPWM).CopyTo(serialCom.txFrame.data, 0);
+            serialCom.txFrame.isUpdated = true;
+            serialCom.SendFrame();
+
+            orderCurveList.Add(XAxisAnalysisWave, CountLift(curLiftSendPWM));
+
+            //接收数据，显示在示波器上
+            realCurveList.Add(XAxisAnalysisWave, (double)liftDataChche[liftCachePosition - 1]);
+
+
             zedGraphControl1ChangeAxis();
+
+            if(incOrdec)
+            {
+                curLiftSendPWM += 0.01f;
+                if (curLiftSendPWM >= 100.0f-0.05f)
+                {
+                    incOrdec = false;
+                }
+            }
+            else
+            {
+                curLiftSendPWM -= 0.01f;
+                if (curLiftSendPWM < 0.0f)
+                {
+                    incOrdec = true;
+                    curLiftSendPWM = 0.0f;
+                }
+            }
+
+            sw.Write(curLiftSendPWM + "\t" + liftDataChche[liftCachePosition - 1] + "\t" + CountLift(curLiftSendPWM) + "\r\n");
         }
-
-
-        private void SquareWave() //产生方波
+        
+        /// <summary>
+        /// 根据PWM波得出升力
+        /// </summary>
+        /// <param name="pwm"></param>
+        /// <returns></returns>
+        private double CountLift(float pwm)
         {
- 
+          //  double data = 0.05917 * pwm * pwm + 0.8007 * pwm - 9.074;
+          //  double data = 0.06309 * pwm * pwm + 1.491 * pwm - 30.16;
+            double data = 0.04953 * pwm * pwm + 2.011 * pwm - 12.82;
+            if (data<0)
+            {
+                data = 0;
+            }
+            return data;
         }
+        /// <summary>
+        /// 根据升力得到PWM波
+        /// </summary>
+        /// <param name="lift"></param>
+        /// <returns></returns>
+        private float CountPWM(double lift)
+        {
+            return (float)(-2.011 + Math.Sqrt(2.011 * 2.011 - 4 * 0.04953 * (-12.82 - lift)) / (2 * 0.04953));
+        }
+
+
+        private void LineWave() //产生线性波
+        {
+            if (!serialCom.isComOpen())
+            {
+                MessageBox.Show("未打开串口，请先打开串口", "警告");
+                return;
+            }
+            XAxisAnalysisWave += 1;
+            serialCom.txFrame.fnCode = FunctionCode.FC_MOTOR_SET_VEL;
+            BitConverter.GetBytes((float)curLineSendPWM).CopyTo(serialCom.txFrame.data, 0);
+            serialCom.txFrame.isUpdated = true;
+            serialCom.SendFrame();
+
+            orderCurveList.Add(XAxisAnalysisWave, CountLift(curLineSendPWM));
+
+            //接收数据，显示在示波器上
+            realCurveList.Add(XAxisAnalysisWave, (double)liftDataChche[liftCachePosition - 1]);
+
+            zedGraphControl1ChangeAxis();
+
+            if (incOrdec)
+            {
+                curLineSendPWM += 0.1f;
+                if (curLineSendPWM >= 100.0f - 0.05f)
+                {
+                    incOrdec = false;
+                }
+            }
+            else
+            {
+                curLineSendPWM -= 0.1f;
+                if (curLineSendPWM < 0.0f)
+                {
+                    incOrdec = true;
+                    curLineSendPWM = 0.0f;
+                }
+            }
+
+            sw.Write(curLineSendPWM + "\t" + liftDataChche[liftCachePosition - 1] + "\t" + CountLift(curLineSendPWM) + "\r\n");
+        }
+        private float curTiSendPWM = 0.0f;
+        private int tiboW = 500;//梯波的长度
+        private int tiboH = 10;//梯波的高度
+        private int tiboTimes = 0;//相同的PWM的次数
         private void TerracedWave() //梯波
-        { 
+        {
+            if (!serialCom.isComOpen())
+            {
+                MessageBox.Show("未打开串口，请先打开串口", "警告");
+                return;
+            }
+            XAxisAnalysisWave += 1;
+            serialCom.txFrame.fnCode = FunctionCode.FC_MOTOR_SET_VEL;
+            BitConverter.GetBytes(curTiSendPWM).CopyTo(serialCom.txFrame.data, 0);
+            serialCom.txFrame.isUpdated = true;
+            serialCom.SendFrame();
 
+            if (tiboTimes >= tiboW)
+            {
+                tiboTimes = 0;
+                curTiSendPWM += tiboH;
+                if (curTiSendPWM>100)
+                {
+                    curTiSendPWM = 0;
+                }
+            }
+            else
+            {
+                tiboTimes++;
+                
+            }
+            orderCurveList.Add(XAxisAnalysisWave, CountLift(curTiSendPWM));
+
+            //接收数据，显示在示波器上
+            realCurveList.Add(XAxisAnalysisWave, (double)liftDataChche[liftCachePosition - 1]);
+
+            zedGraphControl1ChangeAxis();
+            sw.Write(curTiSendPWM + "\t" + XAxisAnalysisWave + "\t" + liftDataChche[liftCachePosition - 1] + "\t" + CountLift(curTiSendPWM) + "\r\n");
         }
-        private void SinWave()
+
+        private float curSinSendPWM  = 0.0f;
+        private float sinLift = 0.0f;
+        private void SinWave()   //正弦波
         {
- 
+            if (!serialCom.isComOpen())
+            {
+                MessageBox.Show("未打开串口，请先打开串口", "警告");
+                return;
+            }
+            XAxisAnalysisWave += 1;
+            
+            serialCom.txFrame.fnCode = FunctionCode.FC_MOTOR_SET_VEL;
+            BitConverter.GetBytes(curSinSendPWM).CopyTo(serialCom.txFrame.data, 0);
+            serialCom.txFrame.isUpdated = true;
+            serialCom.SendFrame();
+
+           // orderCurveList.Add(XAxisAnalysisWave, CountPWM(100) * Math.Sin(((2 * Math.PI) / 200) * curLiftSendPWM));
+           // orderCurveList.Add(XAxisAnalysisWave, CountLift(50 + (50 * (float)Math.Sin(((2 * Math.PI) / 100) * curLiftSendPWM))));
+            sinLift = (float)((CountLift(100)) / 2 + (CountLift(100) / 2) * (float)Math.Sin(((2 * Math.PI) / 200) * XAxisAnalysisWave));
+            curSinSendPWM = CountPWM(sinLift);
+            orderCurveList.Add(XAxisAnalysisWave, sinLift);
+
+            //接收数据，显示在示波器上
+            realCurveList.Add(XAxisAnalysisWave, (double)liftDataChche[liftCachePosition - 1]);
+            
+            zedGraphControl1ChangeAxis();
+            
+            sw.Write(curSinSendPWM + "\t" + XAxisAnalysisWave + "\t" + liftDataChche[liftCachePosition - 1] + "\t" + CountLift(curSinSendPWM) + "\r\n");
         }
-        private void CosWave()
+        private float curCosSendPWM = 0.0f;
+        private float cosLift = 0.0f;
+        private void CosWave()   //余弦波
         {
-  
+            if (!serialCom.isComOpen())
+            {
+                MessageBox.Show("未打开串口，请先打开串口", "警告");
+                return;
+            }
+            XAxisAnalysisWave += 1;
+
+            serialCom.txFrame.fnCode = FunctionCode.FC_MOTOR_SET_VEL;
+            BitConverter.GetBytes(curCosSendPWM).CopyTo(serialCom.txFrame.data, 0);
+            serialCom.txFrame.isUpdated = true;
+            serialCom.SendFrame();
+
+            cosLift = (float)((CountLift(100)) / 2 + (CountLift(100) / 2) * (float)Math.Cos(((2 * Math.PI) / 200) * XAxisAnalysisWave));
+            curCosSendPWM = CountPWM(cosLift);
+            orderCurveList.Add(XAxisAnalysisWave, cosLift);
+
+            //接收数据，显示在示波器上
+            realCurveList.Add(XAxisAnalysisWave, (double)liftDataChche[liftCachePosition - 1]);
+            
+            zedGraphControl1ChangeAxis();
+
+            sw.Write(curLiftSendPWM + "\t" + liftDataChche[liftCachePosition - 1] + "\t" + CountLift(curLiftSendPWM) + "\r\n");
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -1296,7 +1438,7 @@ namespace _3DGimbal
                     listAnalysis.Add("升力");
                     break;
                 case 1:
-                    listAnalysis.Add("方波");
+                    listAnalysis.Add("线性波");
                     listAnalysis.Add("梯波");
                     listAnalysis.Add("正弦波");
                     listAnalysis.Add("余弦波");
@@ -1330,22 +1472,51 @@ namespace _3DGimbal
 
         private void AnalysisTimer_Tick(object sender, EventArgs e)
         {
-            realXAxis += 1;
-            if (liftCachePosition > 0)
+
+            if (DynamicOptionCombox.SelectedIndex == 0)   //制造各种波形，需要显示在示波器上
             {
-                realCurveList.Add(realXAxis, (double)liftDataChche[liftCachePosition - 1]);
+                switch (DynamicAnalysisCombox.SelectedIndex)
+                {
+                    case 0:
+                        LiftText();
+                        break;
+                    default:
+                        break;
+                }
             }
-            zedGraphControl1ChangeAxis();
+            else if (DynamicOptionCombox.SelectedIndex == 1)
+            {
+                switch (DynamicAnalysisCombox.SelectedIndex)
+                {
+                    case 0:
+                        LineWave();
+                        break;
+                    case 1:
+                        TerracedWave();
+                        break;
+                    case 2:
+                        SinWave();
+                        break;
+                    case 3:
+                        CosWave();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            { }
         }
         private void zedGraphControl1ChangeAxis()
         {
-            myPane.XAxis.Scale.Min = realXAxis - 500;
-            myPane.XAxis.Scale.Max = realXAxis;
+            myPane.XAxis.Scale.Min = XAxisAnalysisWave - 500;
+            myPane.XAxis.Scale.Max = XAxisAnalysisWave;
             myPane.XAxis.Scale.MinorStep = 10;//X轴小步长1,也就是小间隔
             myPane.XAxis.Scale.MajorStep = 50;//X轴大步长为5，也就是显示文字的大间隔
             this.zedGraphControl1.AxisChange();
             this.zedGraphControl1.Refresh();  //更新界面
         }
+
 
 
     }
